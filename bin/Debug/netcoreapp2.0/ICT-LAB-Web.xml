@@ -1,0 +1,354 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICT-LAB-Web</name>
+    </assembly>
+    <members>
+        <member name="M:ICT_LAB_Web.Controllers.DevicesController.Get(System.Nullable{System.Int32})">
+            <summary>
+            Gets a device by id.
+            </summary>
+            <param name="device">Id of device</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.DevicesController.GetByRoom(System.String)">
+            <summary>
+            Gets a list of devices in a certain room.
+            </summary>
+            <param name="room">Room code</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.DevicesController.Create(ICT_LAB_Web.Controllers.ViewModels.DeviceViewModel)">
+            <summary>
+            Creates a device.
+            </summary>
+            <param name="model">Device object</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.DevicesController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Deletes a device.
+            </summary>
+            <param name="device">Id of device</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.IssuesController.GetByRoom(System.String)">
+            <summary>
+            Gets a list of issues linked to a certain room.
+            </summary>
+            <param name="room">Room code</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.IssuesController.GetAll">
+            <summary>
+            Gets a list of issues.
+            </summary>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.IssuesController.Index(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Issue pagination.
+            </summary>
+            <param name="page">Page</param>
+            <param name="pageSize">Amount of items on one page</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.IssuesController.Get(System.Nullable{System.Int32})">
+            <summary>
+            Gets aa issue by id.
+            </summary>
+            <param name="issue">Id of issue</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.IssuesController.Create(ICT_LAB_Web.Controllers.ViewModels.IssueViewModel)">
+            <summary>
+            Creates an issue.
+            </summary>
+            <param name="model">Issue object</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.IssuesController.Update(ICT_LAB_Web.Controllers.ViewModels.IssueViewModel)">
+            <summary>
+            Updates an issue.
+            </summary>
+            <param name="model">Issue object</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.IssuesController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Deletes an issue.
+            </summary>
+            <param name="issue">Id of issue</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.IssuesController.DeleteFromRoom(System.String)">
+            <summary>
+            Deletes all issues linked to a certain room.
+            </summary>
+            <param name="room">Room code</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.NotificationsController.GetByUser(System.String,System.String,System.String)">
+            <summary>
+            Gets a list of notifications by user id and between a certain datetime.
+            </summary>
+            <param name="user">Id of user</param>
+            <param name="from">Beginning of datetime reservations</param>
+            <param name="till">End of datetine reservations</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.NotificationsController.Get(System.Nullable{System.Int32})">
+            <summary>
+            Gets a notification by id.
+            </summary>
+            <param name="notification">Id of notification</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.NotificationsController.Create(ICT_LAB_Web.Controllers.ViewModels.NotificationViewModel)">
+            <summary>
+            Creates a notification.
+            </summary>
+            <param name="model">Notification object</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.NotificationsController.Update(ICT_LAB_Web.Controllers.ViewModels.NotificationViewModel)">
+            <summary>
+            Updates a notification.
+            </summary>
+            <param name="model">Notification object</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.NotificationsController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Deletes a notification.
+            </summary>
+            <param name="notification">Id of notification</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.Index(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Reservation pagination.
+            </summary>
+            <param name="page">Page</param>
+            <param name="pageSize">Amount of items on one page</param>
+            <param name="user">Id of user</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.IndexByRoom(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Reservation by room pagination.
+            </summary>
+            <param name="page">Page</param>
+            <param name="pageSize">Amount of items on one page</param>
+            <param name="room">Room code</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.GetByRoom(System.String,System.String,System.String)">
+            <summary>
+            Gets a list with all reservations of a certain room and between a certain datetime.
+            </summary>
+            <param name="room">Room code</param>
+            <param name="from">Beginning of datetime reservations</param>
+            <param name="till">End of datetine reservations</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.GetAll">
+            <summary>
+            Gets a list with all reservations.
+            </summary>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.GetByDate(System.String)">
+            <summary>
+            Gets a list with all reservations by date.
+            </summary>
+            <param name="date">Date of reservations</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.GetLessonsByWeek(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Gets a list with all lessons based on type, department, week and quarter of the year.
+            </summary>
+            <param name="type">Type of schedule: ex. class, room or teacher</param>
+            <param name="index">Index in list</param>
+            <param name="quarter">Quarter of year</param>
+            <param name="week">Week number</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.GetAllTeachers(System.Nullable{System.Int32})">
+            <summary>
+            Gets a list with all teachers to choose from in schedule
+            </summary>
+            <param name="quarter">Quarter of year</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.GetAllClasses(System.Nullable{System.Int32})">
+            <summary>
+            Gets a list with all classes to choose from in schedule
+            </summary>
+            <param name="quarter">Quarter of year</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.GetAllRooms(System.Nullable{System.Int32})">
+            <summary>
+            Gets a list with all rooms to choose from in schedule
+            </summary>
+            <param name="quarter">Quarter of year</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.GetByStart(System.String,System.String)">
+            <summary>
+            Gets a reservation based on user and begin datetime
+            </summary>
+            <param name="user">Id of user</param>
+            <param name="start">Beginning of datetime reservations</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.Get(System.String,System.String,System.String)">
+            <summary>
+            Gets a list with all reservations based on user and between a certain datetime.
+            </summary>
+            <param name="user">Id of user</param>
+            <param name="from">Beginning of datetime reservations</param>
+            <param name="till">End of datetime reservations</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.GetById(System.Nullable{System.Int32})">
+            <summary>
+            Gets a reservation by id.
+            </summary>
+            <param name="reservation">Id of reservation</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.Create(ICT_LAB_Web.Controllers.ViewModels.ReservationViewModel)">
+            <summary>
+            Creates a reservation.
+            </summary>
+            <param name="model">Reservation object</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.Update(ICT_LAB_Web.Controllers.ViewModels.ReservationViewModel)">
+            <summary>
+            Updates a reservation.
+            </summary>
+            <param name="model">Reservation object</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Deletes a reservation.
+            </summary>
+            <param name="reservation">Reservation Id</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.ReservationsController.CheckIfReservationExists(ICT_LAB_Web.Controllers.ViewModels.ReservationViewModel)">
+            <summary>
+            Check if a reservation already exists in the same timeslot and room
+            </summary>
+            <param name="model">Reservation object</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.RolesController.GetAll">
+            <summary>
+            Gets a list with all roles.
+            </summary>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.RolesController.Get(System.Nullable{System.Int32})">
+            <summary>
+            Gets a role by id.
+            </summary>
+            <param name="role">Role id</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.RoomReadingsController.GetByDevice(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Gets a list with all readings of a certain device.
+            </summary>
+            <param name="device">Device id</param>
+            <param name="limit">Limit of readings</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.RoomReadingsController.Get(System.Nullable{System.Int32},System.String,System.String,System.String)">
+            <summary>
+            Gets a list with all readings of a certain device, based on type reading and between a certain datetime.
+            </summary>
+            <param name="device">Device id</param>
+            <param name="type">Type of reading: ex. temp, light or humidity</param>
+            <param name="from">Beginning of datetime readings</param>
+            <param name="till">End of datetime readings</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.RoomReadingsController.Create(ICT_LAB_Web.Controllers.ViewModels.RoomReadingViewModel)">
+            <summary>
+            Creates a reading.
+            </summary>
+            <param name="model">Room reading object</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.RoomReadingsController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Deletes all readings measured by a device
+            </summary>
+            <param name="device">Device id</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.RoomsController.Index(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Room pagination.
+            </summary>
+            <param name="page">Page</param>
+            <param name="pageSize">Amount of items on one page</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.RoomsController.GetAll">
+            <summary>
+            Gets a list with all rooms.
+            </summary>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.RoomsController.Get(System.String)">
+            <summary>
+            Gets a room by room code.
+            </summary>
+            <param name="room">Room code</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.RoomsController.Create(ICT_LAB_Web.Controllers.ViewModels.RoomViewModel)">
+            <summary>
+            Creates a room.
+            </summary>
+            <param name="model">Room object</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.RoomsController.Update(ICT_LAB_Web.Controllers.ViewModels.RoomViewModel)">
+            <summary>
+            Updates a room.
+            </summary>
+            <param name="model">Room object</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.RoomsController.Delete(System.String)">
+            <summary>
+            Deletes a room.
+            </summary>
+            <param name="room">Room code</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.UsersController.ResetPassword(System.String)">
+            <summary>
+            Resets a users password and sends an email.
+            </summary>
+            <param name="email">Email of user</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.UsersController.Index(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            User pagination.
+            </summary>
+            <param name="page">Page</param>
+            <param name="pageSize">Amount of items on one page</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.UsersController.GetAll">
+            <summary>
+            Gets a list with all users.
+            </summary>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.UsersController.GetByEmail(System.String)">
+            <summary>
+            Gets a user by email.
+            </summary>
+            <param name="email">Email of user</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.UsersController.Get(System.String)">
+            <summary>
+            Gets a user by id.
+            </summary>
+            <param name="user">Id of user</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.UsersController.CheckCredentials(System.String,System.String)">
+            <summary>
+            Checks if given email and password match a user.
+            </summary>
+            <param name="email">Email of user</param>
+            <param name="password">Password of user</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.UsersController.Create(ICT_LAB_Web.Controllers.ViewModels.UserViewModel)">
+            <summary>
+            Creates a user.
+            </summary>
+            <param name="model">User object</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.UsersController.Upload">
+            <summary>
+            Uploads an image and adds path to user
+            </summary>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.UsersController.Update(ICT_LAB_Web.Controllers.ViewModels.UserViewModel)">
+            <summary>
+            Updates a user.
+            </summary>
+            <param name="model">User object</param>
+        </member>
+        <member name="M:ICT_LAB_Web.Controllers.UsersController.Delete(System.String)">
+            <summary>
+            Deletes a user.
+            </summary>
+            <param name="user">Id of user</param>
+        </member>
+    </members>
+</doc>
