@@ -17,7 +17,7 @@ namespace ICT_LAB_Web.Tests
     public class RoomRepositoryTests
     {
         private List<Room> TestData;
-        private Mock<IRoomRepository> roomRepository;
+        private Mock<IRoomRepository> RoomRepository;
 
         #region Constructor
 
@@ -26,22 +26,22 @@ namespace ICT_LAB_Web.Tests
             this.InitializeData();
 
             // Mock repo
-            roomRepository = new Mock<IRoomRepository>();
+            RoomRepository = new Mock<IRoomRepository>();
 
             // Get all rooms
-            roomRepository.Setup(e => e.GetAll()).ReturnsAsync(TestData);
+            RoomRepository.Setup(e => e.GetAll()).ReturnsAsync(TestData);
 
             // Get room by room code
-            roomRepository.Setup(e => e.Get(It.IsAny<string>())).ReturnsAsync((string room) => TestData.FirstOrDefault(q => q.RoomCode == room));
+            RoomRepository.Setup(e => e.Get(It.IsAny<string>())).ReturnsAsync((string room) => TestData.FirstOrDefault(q => q.RoomCode == room));
 
             // Add room
-            roomRepository.Setup(e => e.Add(It.IsAny<Room>())).ReturnsAsync((Room room) => { TestData.Add(room); TestData.FirstOrDefault(q => q.RoomCode == room.RoomCode); return room; });
+            RoomRepository.Setup(e => e.Add(It.IsAny<Room>())).ReturnsAsync((Room room) => { TestData.Add(room); TestData.FirstOrDefault(q => q.RoomCode == room.RoomCode); return room; });
 
             // Update room
-            roomRepository.Setup(e => e.Update(It.IsAny<Room>())).ReturnsAsync((Room room) => { var original = TestData.FirstOrDefault(q => q.RoomCode == room.RoomCode); original = room; return room; });
+            RoomRepository.Setup(e => e.Update(It.IsAny<Room>())).ReturnsAsync((Room room) => { var original = TestData.FirstOrDefault(q => q.RoomCode == room.RoomCode); original = room; return room; });
 
             // Delete room
-            roomRepository.Setup(e => e.Delete(It.IsAny<string>())).ReturnsAsync((string room) => { TestData.Remove(TestData.FirstOrDefault(q => q.RoomCode == room)); return TestData.FirstOrDefault(q => q.RoomCode == room) == null ? true : false; });
+            RoomRepository.Setup(e => e.Delete(It.IsAny<string>())).ReturnsAsync((string room) => { TestData.Remove(TestData.FirstOrDefault(q => q.RoomCode == room)); return TestData.FirstOrDefault(q => q.RoomCode == room) == null ? true : false; });
         }
 
         #endregion
@@ -53,7 +53,7 @@ namespace ICT_LAB_Web.Tests
         public async Task Get_All()
         {
             // Arrange
-            var repo = roomRepository.Object;
+            var repo = RoomRepository.Object;
 
             // Act
             var result = await repo.GetAll();
@@ -70,7 +70,7 @@ namespace ICT_LAB_Web.Tests
         public async Task Get_By_RoomCode()
         {
             // Arrange
-            var repo = roomRepository.Object;
+            var repo = RoomRepository.Object;
             var roomCode = "H.5.314";
 
             // Act
@@ -89,7 +89,7 @@ namespace ICT_LAB_Web.Tests
         public async Task Add()
         {
             // Arrange
-            var repo = roomRepository.Object;
+            var repo = RoomRepository.Object;
             var newRoom = new Room {
                 RoomCode = "WD.01.016",
                 StudentCapacity = 35,
@@ -116,7 +116,7 @@ namespace ICT_LAB_Web.Tests
         public async Task Update()
         {
             // Arrange
-            var repo = roomRepository.Object;
+            var repo = RoomRepository.Object;
             var originalRoom = TestData.FirstOrDefault(q => q.RoomCode == "WD.01.016");
             var roomToUpdate = new Room
             {
@@ -144,7 +144,7 @@ namespace ICT_LAB_Web.Tests
         public async Task Delete()
         {
             // Arrange
-            var repo = roomRepository.Object;
+            var repo = RoomRepository.Object;
             var roomToDelete = TestData[0];
 
             // Act
