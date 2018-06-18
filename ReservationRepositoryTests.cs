@@ -123,71 +123,75 @@ namespace ICT_LAB_Web.Tests
         }
 
         [Test]
-        [Order(3)]
+        [Order(4)]
         public async Task Add()
         {
             // Arrange
             var repo = ReservationRepository.Object;
-            var newRoom = new Room
+            var newReservation = new Reservation
             {
-                RoomCode = "WD.01.016",
-                StudentCapacity = 35,
-                HasComputer = true,
-                HasSmartboard = true,
-                HasWindows = true
+                ReservationId = 6,
+                RoomCode = "H.4.308",
+                UserId = "barackobama",
+                StartTime = DateTime.Now,
+                EndTime = DateTime.Now.AddHours(4),
+                Description = "Work on assignment"
             };
 
             // Act
-            var result = await repo.Add(newRoom);
+            var result = await repo.Add(newReservation);
 
             // Assert
-            var room = result.Should().BeOfType<Room>().Subject;
+            var reservation = result.Should().BeOfType<Reservation>().Subject;
 
-            room.Should().NotBeNull();
-            room.RoomCode.Should().Be("WD.01.016");
-            room.StudentCapacity.Should().Be(35);
+            reservation.Should().NotBeNull();
+            reservation.RoomCode.Should().Be("H.4.308");
+            reservation.UserId.Should().Be("barackobama");
+            reservation.ReservationId.Should().Be(6);
 
             TestData.Count.Should().Be(6);
         }
 
         [Test]
-        [Order(4)]
+        [Order(5)]
         public async Task Update()
         {
             // Arrange
             var repo = ReservationRepository.Object;
-            var originalRoom = TestData.FirstOrDefault(q => q.RoomCode == "WD.01.016");
-            var roomToUpdate = new Room
+            var originalReservation = TestData.FirstOrDefault(q => q.RoomCode == "H.4.308");
+            var reservationToUpdate = new Reservation
             {
-                RoomCode = "WD.01.016",
-                StudentCapacity = 30,
-                HasComputer = true,
-                HasSmartboard = true,
-                HasWindows = true
+                ReservationId = 6,
+                RoomCode = "H.4.308",
+                UserId = "barackobama",
+                StartTime = DateTime.Now,
+                EndTime = DateTime.Now.AddHours(3),
+                Description = "Work on assignment"
             };
 
             // Act
-            var result = await repo.Update(roomToUpdate);
+            var result = await repo.Update(reservationToUpdate);
 
             // Assert
-            var room = result.Should().BeOfType<Room>().Subject;
+            var reservation = result.Should().BeOfType<Reservation>().Subject;
 
-            room.Should().NotBeNull();
-            room.RoomCode.Should().Be("WD.01.016");
-            room.StudentCapacity.Should().Be(30);
-            room.Should().NotBeSameAs(originalRoom);
+            reservation.Should().NotBeNull();
+            reservation.RoomCode.Should().Be("H.4.308");
+            reservation.UserId.Should().Be("barackobama");
+            reservation.ReservationId.Should().Be(6);
+            reservation.Should().NotBeSameAs(originalReservation);
         }
 
         [Test]
-        [Order(5)]
+        [Order(6)]
         public async Task Delete()
         {
             // Arrange
             var repo = ReservationRepository.Object;
-            var roomToDelete = TestData[0];
+            var reservationToDelete = TestData[0];
 
             // Act
-            var result = await repo.Delete(roomToDelete.RoomCode);
+            var result = await repo.Delete(reservationToDelete.ReservationId);
 
             // Assert
             result.Should().BeTrue();
