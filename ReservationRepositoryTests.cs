@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -33,7 +34,7 @@ namespace ICT_LAB_Web.Tests
             ReservationRepository.Setup(e => e.GetAll()).ReturnsAsync(TestData);
 
             // Get reservation by user id
-            ReservationRepository.Setup(e => e.Get(It.IsAny<string>(), null, null)).ReturnsAsync((string id) => TestData.Where(q => q.UserId == id).ToList());
+            ReservationRepository.Setup(e => e.Get(It.IsAny<string>(), null, null)).ReturnsAsync((string id, DateTime? from, DateTime? till) => TestData.Where(q => q.UserId == id).ToList());
 
             // Get reservation by user id, from and till date
             ReservationRepository.Setup(e => e.Get(It.IsAny<string>(), It.IsAny<DateTime>(), It.IsAny<DateTime>())).ReturnsAsync((string id, DateTime from, DateTime till) => TestData.Where(q => q.UserId == id && q.StartTime >= from && q.EndTime <= till).ToList());
@@ -42,7 +43,7 @@ namespace ICT_LAB_Web.Tests
             ReservationRepository.Setup(e => e.GetById(It.IsAny<int>())).ReturnsAsync((int id) => TestData.FirstOrDefault(q => q.ReservationId == id));
 
             // Get reservation by room
-            ReservationRepository.Setup(e => e.GetByRoom(It.IsAny<string>(), null, null)).ReturnsAsync((string room) => TestData.Where(q => q.RoomCode == room).ToList());
+            ReservationRepository.Setup(e => e.GetByRoom(It.IsAny<string>(), null, null)).ReturnsAsync((string room, DateTime from, DateTime till) => TestData.Where(q => q.RoomCode == room).ToList());
 
             // Get reservation by room, from and till data
             ReservationRepository.Setup(e => e.GetByRoom(It.IsAny<string>(), It.IsAny<DateTime>(), It.IsAny<DateTime>())).ReturnsAsync((string room, DateTime from, DateTime till) => TestData.Where(q => q.RoomCode == room && q.StartTime >= from && q.EndTime <= till).ToList());
@@ -109,8 +110,8 @@ namespace ICT_LAB_Web.Tests
             // Arrange
             var repo = ReservationRepository.Object;
             var userId = "jansmit";
-            var from = DateTime.Now;
-            var till = DateTime.Now.AddDays(1);
+            var from = DateTime.ParseExact("2018-06-12 09:00:00", "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+            var till = from.AddDays(1);
 
             // Act
             var result = await repo.Get(userId, from, till);
@@ -204,16 +205,16 @@ namespace ICT_LAB_Web.Tests
 
         private void InitializeData()
         {
-            var reservation = new List<Reservation>
+            var reservations = new List<Reservation>
             {
                 new Reservation { ReservationId = 1, UserId = "bobdylan", RoomCode = "H.5.314", Description = "Meeting", StartTime = DateTime.Now, EndTime = DateTime.Now.AddHours(3) },
                 new Reservation { ReservationId = 2, UserId = "barackobama", RoomCode = "WD.01.016", Description = "Meeting with administrators", StartTime = DateTime.Now, EndTime = DateTime.Now.AddHours(1) },
                 new Reservation { ReservationId = 3, UserId = "spongebobsquarepants", RoomCode = "H.4.312", Description = "Working with team on project", StartTime = DateTime.Now, EndTime = DateTime.Now.AddHours(4) },
                 new Reservation { ReservationId = 4, UserId = "adminhenk", RoomCode = "H.2.203", Description = "Hiding from boss", StartTime = DateTime.Now, EndTime = DateTime.Now.AddHours(8) },
-                new Reservation { ReservationId = 5, UserId = "jansmit", RoomCode = "WD.04.002", Description = "Secret karaoke", StartTime = DateTime.Now, EndTime = DateTime.Now.AddHours(2) },
+                new Reservation { ReservationId = 5, UserId = "jansmit", RoomCode = "WD.04.002", Description = "Secret karaoke", StartTime = DateTime.ParseExact("2018-06-12 11:00:00", "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture), EndTime = DateTime.ParseExact("2018-06-12 13:00:00", "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture) },
             };
 
-            this.TestData = reservation;
+            this.TestData = reservations;
         }
 
         #endregion
